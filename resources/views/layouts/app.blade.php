@@ -29,7 +29,8 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{--{{ config('app.name', 'Laravel') }}--}}
+                        <img src="images/prospect_logger_logo2.svg" width="auto" height="26px" alt="Sunny Tree Software">
                     </a>
                 </div>
 
