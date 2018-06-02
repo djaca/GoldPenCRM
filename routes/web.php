@@ -20,3 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('users', 'AdminUsersController');
+
+Route::resource('companies', 'AdminCompaniesController');
+
+Route::resource('roles', 'AdminRolesController');
