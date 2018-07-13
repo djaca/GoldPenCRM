@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Company;
+use App\Role;
 use Illuminate\Http\Request;
 
-class AdminCompaniesController extends Controller
+class AdminRolesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class AdminCompaniesController extends Controller
      */
     public function index()
     {
-        $companies = Company::orderBy('updated_at', 'desc')->paginate(10);
-        return view('roles.admin.companies.index', compact('companies'));
+        $roles = Role::all();
+        return view('roles.admin.roles.index', compact('roles'));
     }
 
     /**
