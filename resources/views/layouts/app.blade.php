@@ -29,12 +29,9 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-<<<<<<< HEAD
-                        {{ config('app.name', 'GoldPenCRM') }}
-=======
-                        {{--{{ config('app.name', 'Laravel') }}--}}
+                        {{--{{ config('app.name', 'GoldPenCRM') }}--}}
+
                         <img src="images/prospect_logger_logo2.svg" width="auto" height="26px" alt="Sunny Tree Software">
->>>>>>> d0a15649b9baa26603cd2b56617956d1b06489e7
                     </a>
                 </div>
 

@@ -15,7 +15,7 @@ class AdminCompaniesController extends Controller
     public function index()
     {
         $companies = Company::orderBy('updated_at', 'desc')->paginate(10);
-        return view('admin.companies.index', compact('companies'));
+        return view('roles.admin.companies.index', compact('companies'));
     }
 
     /**
@@ -25,7 +25,8 @@ class AdminCompaniesController extends Controller
      */
     public function create()
     {
-        //
+        // created by admin or...
+        // happens automatically when user signs up
     }
 
     /**
