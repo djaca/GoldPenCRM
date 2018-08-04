@@ -25,8 +25,12 @@ class AdminCompaniesController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         // created by admin or...
         // happens automatically when user signs up
+=======
+        return "create something";
+>>>>>>> b9cd377c62ef4f257174f72fcfeb4384e545f4b7
     }
 
     /**

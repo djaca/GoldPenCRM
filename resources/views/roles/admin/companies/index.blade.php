@@ -5,6 +5,7 @@
 
 <div class="container">
 
+
     @if(@!Auth::user())
         You do not have permission to access this content.
 
@@ -51,7 +52,6 @@
         You must be logged in with admin privileges to view this content.
 
     @endif
-
 
 
     @endsection
