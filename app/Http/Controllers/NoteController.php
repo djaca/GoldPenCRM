@@ -14,7 +14,8 @@ class NoteController extends Controller
      */
     public function index()
     {
-        //
+        $notes = Note::orderBy('updated_at', 'desc')->paginate(10);
+        return view('roles.admin.notes.index', compact('notes'));
     }
 
     /**
