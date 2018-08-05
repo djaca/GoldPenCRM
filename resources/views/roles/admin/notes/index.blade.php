@@ -69,7 +69,7 @@
                 @if($notes)
                     @foreach($notes as $note)
                         @if(Auth::user()->id == $note->user_id)
-                            <tr>
+                            <tr>comp
                                 <td>{{$note->id}}</td>
                                 <td>{{$note->user->name}}</td>
                                 {{--<td>{{$note->prospect->name}}</td>--}}

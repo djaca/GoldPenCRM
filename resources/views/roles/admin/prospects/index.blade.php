@@ -39,8 +39,7 @@
                         <td>{{$prospect->email ? $prospect->email : "-"}}</td>
                         <td>{{$prospect->phone ? $prospect->phone : "-"}}</td>
                         <td>{{$prospect->fax ? $prospect->fax : "-"}}</td>
-                        <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "unknown date"}}</td>
-                        <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "unknown date"}}</td>
+                        <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "-"}}</td>
 
                         @if($prospect->funnel->status == "Hot")
                             <td style="background-color:red; color:white">{{$prospect->funnel->status}}</td>
@@ -98,8 +97,7 @@
                                 <td>{{$prospect->email ? $prospect->email : "-"}}</td>
                                 <td>{{$prospect->phone ? $prospect->phone : "-"}}</td>
                                 <td>{{$prospect->fax ? $prospect->fax : "-"}}</td>
-                                <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "unknown date"}}</td>
-                                <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "unknown date"}}</td>
+                                <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "-"}}</td>
 
                                 @if($prospect->funnel->status == "Hot")
                                     <td style="background-color:red; color:white">{{$prospect->funnel->status}}</td>
@@ -129,8 +127,8 @@
 
 
 
-    {{-- SUBSCRIBER ACCESS --}}
-    @elseif(Auth::user()->role_id == 4)
+    {{-- SUBSCRIBER & AGENT ACCESS --}}
+    @elseif(Auth::user()->role_id == 4 || Auth::user()->role_id == 3)
         Welcome, {{ Auth::user()->name }}
         <h1>Prospects</h1>
         <table class="table">
@@ -158,7 +156,7 @@
                             <td>{{$prospect->email ? $prospect->email : "-"}}</td>
                             <td>{{$prospect->phone ? $prospect->phone : "-"}}</td>
                             <td>{{$prospect->fax ? $prospect->fax : "-"}}</td>
-                            <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "unknown date"}}</td>
+                            <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "-"}}</td>
 
                             @if($prospect->funnel->status == "Hot")
                                 <td style="background-color:red; color:white">{{$prospect->funnel->status}}</td>

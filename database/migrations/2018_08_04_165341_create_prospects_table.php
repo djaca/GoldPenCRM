@@ -24,7 +24,7 @@ class CreateProspectsTable extends Migration
             $table->string('address2')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
-            $table->integer('zip')->nullable();
+            $table->string('zip')->nullable();
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();
             $table->timestamps();
