@@ -13,12 +13,13 @@ class Company extends Model
      */
     protected $fillable = [
         'name',
+        'email',
         'address1',
         'address2',
         'city',
         'state',
         'zip',
         'phone',
-        'fax',
+        'fax'
     ];
 }

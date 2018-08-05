@@ -3,12 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
+
 
 class Note extends Model
 {
-
-    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -18,6 +16,7 @@ class Note extends Model
     protected $fillable = [
         'user_id',
         'prospect_id',
+        'customer_id',
         'title',
         'description'
     ];
@@ -28,5 +27,9 @@ class Note extends Model
 
     public function prospect(){
         return $this->belongsTo('App\Prospect');
+    }
+
+    public function customer(){
+        return $this->belongsTo('App\Customer');
     }
 }
