@@ -88,8 +88,8 @@
                     <img src="images/prospect_logger_logo2.svg" width="auto" height="120px" alt="Sunny Tree Software">
                 </div>
 
-                <div class="links">GoldPenCRM was Developed by <br>
-                    <a href="http://www.sunnytree.org">Sunny Tree Software</a>
+                <div class="links"><span style="font-size:18px; font-weight:700">GoldPenCRM is a product of</span> <br>
+                        <a href="http://www.sunnytree.org">Sunny Tree Software</a>
 
                 </div>
             </div>
