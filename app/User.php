@@ -42,4 +42,8 @@ class User extends Authenticatable
     public function note(){
         return $this->belongsTo('App\Note');
     }
+
+    public function prospect(){
+        return $this->belongsTo('App\Prospect');
+    }
 }

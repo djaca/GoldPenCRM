@@ -12,31 +12,52 @@
     {{-- ADMIN ACCESS --}}
     @elseif(Auth::user()->role_id == 1)
         Welcome, Admin!
-        <h1>Notes</h1>
+        <h1>Prospects</h1>
         <table class="table">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>User</th>
-               {{-- <th>Prospect</th>--}}
-                <th>Title</th>
-                <th>Description</th>
-                <th>Created</th>
+                <th>Created By</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Fax</th>
                 <th>Updated</th>
+                <th>Status</th>
             </tr>
             </thead>
             <tbody>
 
-            @if($notes)
-                @foreach($notes as $note)
+            @if($prospects)
+                @foreach($prospects as $prospect)
                     <tr>
-                        <td>{{$note->id}}</td>
-                        <td>{{$note->user->name}}</td>
-                        {{--<td>{{$note->prospect->name}}</td>--}}
-                        <td>{{$note->title}}</td>
-                        <td>{{$note->description}}</td>
-                        <td>{{$note->created_at ? $note->created_at->diffForHumans() : "unknown date"}}</td>
-                        <td>{{$note->updated_at ? $note->updated_at->diffForHumans() : "unknown date"}}</td>
+                        <td>{{$prospect->id}}</td>
+                        <td>{{$prospect->user->name}}</td>
+                        <td>{{$prospect->name_last ? $prospect->name_last : "-"}}</td>
+                        <td>{{$prospect->name_first}}</td>
+                        <td>{{$prospect->email ? $prospect->email : "-"}}</td>
+                        <td>{{$prospect->phone ? $prospect->phone : "-"}}</td>
+                        <td>{{$prospect->fax ? $prospect->fax : "-"}}</td>
+                        <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "unknown date"}}</td>
+                        <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "unknown date"}}</td>
+
+                        @if($prospect->funnel->status == "Hot")
+                            <td style="background-color:red; color:white">{{$prospect->funnel->status}}</td>
+
+                        @elseif($prospect->funnel->status == "Warm")
+                            <td style="background-color:green; color:white">{{$prospect->funnel->status}}</td>
+
+                        @elseif($prospect->funnel->status == "Cold")
+                            <td style="background-color:yellow; color:darkgrey">{{$prospect->funnel->status}}</td>
+
+                        @elseif($prospect->funnel->status == "Dead")
+                            <td style="background-color:silver; color:grey">{{$prospect->funnel->status}}</td>
+
+                        @else
+                            <td>Nothing to show</td>
+
+                        @endif
                     </tr>
                 @endforeach
             @endif
@@ -44,40 +65,58 @@
             </tbody>
         </table>
 
-        {{ $notes->links() }}
+        {{ $prospects->links() }}
 
 
         {{-- MANAGER ACCESS --}}
 
         @elseif(Auth::user()->role_id == 2)
             Welcome, {{ Auth::user()->name }}
-            <h1>Notes</h1>
+            <h1>Prospects</h1>
             <table class="table">
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>User</th>
-                    {{-- <th>Prospect</th>--}}
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Created</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Fax</th>
                     <th>Updated</th>
+                    <th>Status</th>
                 </tr>
                 </thead>
                 <tbody>
 
-                @if($notes)
-                    @foreach($notes as $note)
-                        @if(Auth::user()->id == $note->user_id)
+                @if($prospects)
+                    @foreach($prospects as $prospect)
+                        @if(Auth::user()->id == $prospect->user_id)
                             <tr>
-                                <td>{{$note->id}}</td>
-                                <td>{{$note->user->name}}</td>
-                                {{--<td>{{$note->prospect->name}}</td>--}}
-                                <td>{{$note->title}}</td>
-                                <td>{{$note->description}}</td>
+                                <td>{{$prospect->id}}</td>
+                                <td>{{$prospect->name_last ? $prospect->name_last : "-"}}</td>
+                                <td>{{$prospect->name_first}}</td>
+                                <td>{{$prospect->email ? $prospect->email : "-"}}</td>
+                                <td>{{$prospect->phone ? $prospect->phone : "-"}}</td>
+                                <td>{{$prospect->fax ? $prospect->fax : "-"}}</td>
+                                <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "unknown date"}}</td>
+                                <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "unknown date"}}</td>
 
-                                <td>{{$note->created_at ? $note->created_at->diffForHumans() : "unknown date"}}</td>
-                                <td>{{$note->updated_at ? $note->updated_at->diffForHumans() : "unknown date"}}</td>
+                                @if($prospect->funnel->status == "Hot")
+                                    <td style="background-color:red; color:white">{{$prospect->funnel->status}}</td>
+
+                                @elseif($prospect->funnel->status == "Warm")
+                                    <td style="background-color:green; color:white">{{$prospect->funnel->status}}</td>
+
+                                @elseif($prospect->funnel->status == "Cold")
+                                    <td style="background-color:yellow; color:darkgrey">{{$prospect->funnel->status}}</td>
+
+                                @elseif($prospect->funnel->status == "Dead")
+                                    <td style="background-color:silver; color:grey">{{$prospect->funnel->status}}</td>
+
+                                @else
+                                    <td>Nothing to show</td>
+
+                                @endif
                             </tr>
                         @endif
                     @endforeach
@@ -86,40 +125,57 @@
                 </tbody>
             </table>
 
-        {{ $notes->links() }}
+        {{ $prospects->links() }}
 
 
 
     {{-- SUBSCRIBER ACCESS --}}
     @elseif(Auth::user()->role_id == 4)
         Welcome, {{ Auth::user()->name }}
-        <h1>Notes</h1>
+        <h1>Prospects</h1>
         <table class="table">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>User</th>
-                {{-- <th>Prospect</th>--}}
-                <th>Title</th>
-                <th>Description</th>
-                <th>Created</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Fax</th>
                 <th>Updated</th>
+                <th>Status</th>
             </tr>
             </thead>
             <tbody>
 
-            @if($notes)
-                @foreach($notes as $note)
-                    @if(Auth::user()->id == $note->user_id)
+            @if($prospects)
+                @foreach($prospects as $prospect)
+                    @if(Auth::user()->id == $prospect->user_id)
                         <tr>
-                            <td>{{$note->id}}</td>
-                            <td>{{$note->user->name}}</td>
-                            {{--<td>{{$note->prospect->name}}</td>--}}
-                            <td>{{$note->title}}</td>
-                            <td>{{$note->description}}</td>
+                            <td>{{$prospect->id}}</td>
+                            <td>{{$prospect->name_last ? $prospect->name_last : "-"}}</td>
+                            <td>{{$prospect->name_first}}</td>
+                            <td>{{$prospect->email ? $prospect->email : "-"}}</td>
+                            <td>{{$prospect->phone ? $prospect->phone : "-"}}</td>
+                            <td>{{$prospect->fax ? $prospect->fax : "-"}}</td>
+                            <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "unknown date"}}</td>
 
-                            <td>{{$note->created_at ? $note->created_at->diffForHumans() : "unknown date"}}</td>
-                            <td>{{$note->updated_at ? $note->updated_at->diffForHumans() : "unknown date"}}</td>
+                            @if($prospect->funnel->status == "Hot")
+                                <td style="background-color:red; color:white">{{$prospect->funnel->status}}</td>
+
+                                @elseif($prospect->funnel->status == "Warm")
+                                <td style="background-color:green; color:white">{{$prospect->funnel->status}}</td>
+
+                                @elseif($prospect->funnel->status == "Cold")
+                                    <td style="background-color:yellow; color:darkgrey">{{$prospect->funnel->status}}</td>
+
+                            @elseif($prospect->funnel->status == "Dead")
+                                <td style="background-color:silver; color:grey">{{$prospect->funnel->status}}</td>
+
+                            @else
+                                <td>Nothing to show</td>
+
+                            @endif
                         </tr>
                     @endif
                 @endforeach
@@ -128,7 +184,7 @@
             </tbody>
         </table>
 
-        {{ $notes->links() }}
+        {{ $prospects->links() }}
 
     @endif
 

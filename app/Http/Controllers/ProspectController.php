@@ -14,7 +14,8 @@ class ProspectController extends Controller
      */
     public function index()
     {
-        //
+        $prospects = Prospect::orderBy('updated_at', 'desc')->paginate(10);
+        return view('roles.admin.prospects.index', compact('prospects'));
     }
 
     /**
