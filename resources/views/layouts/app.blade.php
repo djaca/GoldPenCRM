@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'GoldPenCRM') }}</title>
+    {{--<title>{{ config('app.name', 'GoldPenCRM') }}</title>--}}
+    <title>GoldPen CRM</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -29,12 +30,12 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-<<<<<<< HEAD
-                        {{ config('app.name', 'GoldPenCRM') }}
-=======
+
+                        {{ config('GoldPenCRM') }}
+
                         {{--{{ config('app.name', 'Laravel') }}--}}
                         <img src="images/prospect_logger_logo2.svg" width="auto" height="26px" alt="Sunny Tree Software">
->>>>>>> d0a15649b9baa26603cd2b56617956d1b06489e7
+
                     </a>
                 </div>
 

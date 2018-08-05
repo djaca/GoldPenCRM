@@ -17,7 +17,7 @@
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
-                font-weight: 200;
+                font-weight: 800;
                 height: 100vh;
                 margin: 0;
             }
@@ -30,6 +30,7 @@
                 align-items: center;
                 display: flex;
                 justify-content: center;
+
             }
 
             .position-ref {
@@ -52,10 +53,10 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: saddlebrown;
                 padding: 0 25px;
                 font-size: 14px;
-                font-weight: 300;
+                font-weight: 800;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
@@ -69,7 +70,7 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+           @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
@@ -81,12 +82,13 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    GoldPenCRM <br>
 
+                <h1>Simplified process for tracking leads, prospects and sales.</h1>
+                <div class="title m-b-md">
+                    <img src="images/prospect_logger_logo2.svg" width="auto" height="120px" alt="Sunny Tree Software">
                 </div>
 
-                <div class="links">
+                <div class="links">GoldPenCRM was Developed by <br>
                     <a href="http://www.sunnytree.org">Sunny Tree Software</a>
 
                 </div>
