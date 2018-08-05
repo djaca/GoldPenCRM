@@ -16,7 +16,6 @@ class Note extends Model
     protected $fillable = [
         'user_id',
         'prospect_id',
-        'customer_id',
         'title',
         'description'
     ];
