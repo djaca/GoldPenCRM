@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Funnel;
 use App\Prospect;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProspectController extends Controller
 {
@@ -14,8 +16,11 @@ class ProspectController extends Controller
      */
     public function index()
     {
-        $prospects = Prospect::orderBy('updated_at', 'desc')->paginate(10);
-        return view('roles.admin.prospects.index', compact('prospects'));
+        $prospects = Prospect::orderBy('updated_at', 'desc')->paginate(25);
+        $usr_pros = Prospect::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->paginate(25);
+
+        return view('roles.admin.prospects.index',
+            compact('prospects','usr_pros'));
     }
 
     /**
@@ -25,7 +30,8 @@ class ProspectController extends Controller
      */
     public function create()
     {
-        //
+        $funnels = Funnel::pluck('status', 'id')->all();
+        return view('roles.admin.prospects.create', compact('funnels'));
     }
 
     /**
@@ -36,7 +42,26 @@ class ProspectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $data = [
+            'user_id' => $user->id,
+            'funnel_id' => $request->funnel_id,
+            'name_first' => $request->name_first,
+            'name_last' => $request->name_last,
+            'email' => $request->email,
+            'address1' => $request->address1,
+            'address2' => $request->address2,
+            'city' => $request->city,
+            'state' => $request->state,
+            'zip' => $request->zip,
+            'phone' => $request->phone,
+            'fax' => $request->fax
+        ];
+
+        Prospect::create($data);
+
+        return redirect(route('prospects.index'));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NoteController extends Controller
 {
@@ -14,8 +15,10 @@ class NoteController extends Controller
      */
     public function index()
     {
-        $notes = Note::orderBy('updated_at', 'desc')->paginate(10);
-        return view('roles.admin.notes.index', compact('notes'));
+        $notes = Note::orderBy('updated_at', 'desc')->paginate(25);
+        $usr_notes = Note::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->paginate(25);
+
+        return view('roles.admin.notes.index', compact('notes','usr_notes'));
     }
 
     /**
