@@ -16,8 +16,7 @@ class CreateProspectsTable extends Migration
         Schema::create('prospects', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->index()->unsigned();
-            $table->integer('company_id')->index()->unsigned()->nullable();
-            $table->integer('funnels_id')->index()->unsigned()->nullable();
+            $table->integer('funnel_id')->index()->unsigned()->nullable();
             $table->string('name_last')->nullable();
             $table->string('name_first');
             $table->string('email')->nullable();
@@ -25,14 +24,13 @@ class CreateProspectsTable extends Migration
             $table->string('address2')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
-            $table->string('county')->nullable();
             $table->integer('zip')->nullable();
             $table->string('phone')->nullable();
+            $table->string('fax')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('funnels_id')->references('id')->on('funnels');
+            $table->foreign('funnel_id')->references('id')->on('funnels');
 
         });
     }

@@ -19,11 +19,9 @@ class CreateNotesTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->integer('prospect_id')->index()->unsigned()->nullable();
-            $table->integer('customer_id')->index()->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('customer_id')->references('id')->on('customers');
             $table->foreign('prospect_id')->references('id')->on('prospects');
         });
     }
