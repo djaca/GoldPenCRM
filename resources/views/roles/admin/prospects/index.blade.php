@@ -42,19 +42,19 @@
                         <td>{{$prospect->updated_at ? $prospect->updated_at->diffForHumans() : "-"}}</td>
 
                         @if($prospect->funnel->status == "Hot")
-                            <td style="background-color:red; color:white">{{$prospect->funnel->status}}</td>
+                            <td style="background-color:purple; color:white; text-transform:uppercase;">{{$prospect->funnel->status}}</td>
 
                         @elseif($prospect->funnel->status == "Warm")
-                            <td style="background-color:green; color:white">{{$prospect->funnel->status}}</td>
+                            <td style="background-color:orange; color:white; text-transform:uppercase;">{{$prospect->funnel->status}}</td>
 
                         @elseif($prospect->funnel->status == "Cold")
-                            <td style="background-color:yellow; color:darkgrey">{{$prospect->funnel->status}}</td>
+                            <td style="background-color:lightblue; color:white; text-transform:uppercase;">{{$prospect->funnel->status}}</td>
 
                         @elseif($prospect->funnel->status == "Dead")
-                            <td style="background-color:silver; color:grey">{{$prospect->funnel->status}}</td>
+                            <td style="background-color:#cfcfcf; color:#c3c3c3; text-transform:uppercase;">{{$prospect->funnel->status}}</td>
 
                         @else
-                            <td>Nothing to show</td>
+                            <td>-</td>
 
                         @endif
                     </tr>
@@ -168,7 +168,7 @@
                                     <td style="background-color:yellow; color:darkgrey">{{$usr_pro->funnel->status}}</td>
 
                             @elseif($usr_pro->funnel->status == "Dead")
-                                <td style="background-color:silver; color:grey">{{$usr_pro->funnel->status}}</td>
+                                <td style="background-color:silver; color:grey"><i class="fas fa-dizzy"></i>{{$usr_pro->funnel->status}}</td>
 
                             @else
                                 <td>Nothing to show</td>
