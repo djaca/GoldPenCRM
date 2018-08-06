@@ -30,8 +30,6 @@ class CreateProspectsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('funnel_id')->references('id')->on('funnels');
-
         });
     }
 

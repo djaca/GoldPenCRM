@@ -83,7 +83,7 @@
 
             <div class="content">
 
-                <h1>Simplified process for tracking leads, prospects and sales.</h1>
+                <h1>Simplified process for tracking interactions with potential customers. </h1>
                 <div class="title m-b-md">
                     <img src="images/prospect_logger_logo2.svg" width="auto" height="120px" alt="Sunny Tree Software">
                 </div>

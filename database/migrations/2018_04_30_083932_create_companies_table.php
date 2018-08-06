@@ -27,7 +27,6 @@ class CreateCompaniesTable extends Migration
             $table->string('fax')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
