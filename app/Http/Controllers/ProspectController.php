@@ -17,7 +17,13 @@ class ProspectController extends Controller
     public function index()
     {
         $prospects = Prospect::orderBy('updated_at', 'desc')->paginate(25);
-        $usr_pros = Prospect::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->paginate(25);
+
+        $usr_pros = '';
+
+        if(Auth::user()){
+            $usr_pros = Prospect::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->paginate(25);
+        }
+
 
         return view('roles.admin.prospects.index',
             compact('prospects','usr_pros'));
