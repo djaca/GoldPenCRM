@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/prospectlogger.iml" filepath="$PROJECT_DIR$/.idea/prospectlogger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/GoldPenCRM.iml" filepath="$PROJECT_DIR$/.idea/GoldPenCRM.iml" />
     </modules>
   </component>
 </project>
