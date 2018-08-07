@@ -70,27 +70,18 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-           @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
+
 
             <div class="content">
 
-                <h1>Simplified process for tracking interactions with potential customers. </h1>
+                <h1>Simplify the process for tracking interactions with potential customers. </h1>
+
                 <div class="title m-b-md">
                     <img src="images/prospect_logger_logo2.svg" width="auto" height="120px" alt="Sunny Tree Software">
                 </div>
 
                 <div class="links"><span style="font-size:18px; font-weight:700">GoldPenCRM is a product of</span> <br>
                         <a href="http://www.sunnytree.org">Sunny Tree Software</a>
-
                 </div>
             </div>
         </div>
