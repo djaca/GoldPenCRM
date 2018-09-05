@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Funnel;
 use App\Note;
 use App\Prospect;
-use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,27 +18,17 @@ class NoteController extends Controller
      */
     public function index()
     {
-//        $notes = Note::orderBy('updated_at', 'desc')->paginate(25);
-//        $notes = Note::all();
+
         $notes = Note::sortable()->paginate(20);
 
-        $id = Auth::id();
-        $notes2 = Note::where('user_id', $id)->sortable()->paginate();
 
-//        $notes2 = $not_admin;
+//        $notes2 = '';
 
-//        $usr_notes1 = Note::where('user_id', Auth::user()->id);
-//        $usr_notes2 = $usr_notes1->sortable()->paginate(20);
-//        $usr_notes = Note::where('user_id', Auth::user()->id)->sortable()->paginate(20);
-        /*if(Auth::user()->id != 1){
-            $notes = $notes->where('user_id', Auth::user()->id);
-        }*/
-      /*  $usr_notes = Note::select(['id as not_admin'])
-//                        ->where('user_id', Auth::user()->id)
-                        ->sortable(['not_admin'])
-                        ->paginate(10);*/
+        if(Auth::id() != 1){
+            $notes = Note::where('notes.user_id', Auth::id())->sortable()->paginate(20);
+        }
 
-        return view('roles.admin.notes.index', compact('notes', 'notes2'));
+        return view('roles.admin.notes.index', compact('notes'));
     }
 
     /**

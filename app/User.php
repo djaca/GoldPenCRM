@@ -46,4 +46,5 @@ class User extends Authenticatable
     public function prospect(){
         return $this->belongsTo('App\Prospect');
     }
+
 }

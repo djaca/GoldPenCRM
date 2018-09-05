@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
+use Illuminate\Support\Facades\Auth;
 
 class Prospect extends Model
 {
@@ -20,6 +22,13 @@ class Prospect extends Model
         'phone',
         'fax'
     ];
+    use Sortable;
+
+    public $sortable = [
+        'name_last'
+    ];
+
+
 
     public function user(){
         return $this->belongsTo('App\User');

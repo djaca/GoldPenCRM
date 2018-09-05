@@ -55,7 +55,7 @@
             <thead>
             <tr>
                 <th>@sortablelink('id', 'ID')</th>
-                <th>@sortablelink('prospect', 'Prospect')</th>
+                <th>@sortablelink('prospect.name_last', 'Prospect')</th>
                 <th>@sortablelink('user.name', 'User')</th>
                 <th>@sortablelink('title', 'Title')</th>
                 <th>@sortablelink('description', 'Description')</th>
@@ -64,9 +64,9 @@
             </thead>
             <tbody>
 
-            @if($notes2)
-                @foreach($notes2 as $user_note)
-                    @if(Auth::user()->id == $user_note->user_id)
+            @if($notes)
+                @foreach($notes as $user_note)
+                    {{--@if(Auth::user()->id == $user_note->user_id)--}}
                         <tr>
                             <td>{{$user_note->id}}</td>
                             <td>{{$user_note->prospect->name_last}}</td>
@@ -76,7 +76,7 @@
                             <td>{{$user_note->created_at ? $user_note->created_at->diffForHumans() : "-"}}</td>
 
                         </tr>
-                    @endif
+                    {{--@endif--}}
                 @endforeach
             @endif
 
@@ -84,7 +84,7 @@
         </table>
 
 
-        {{ $notes2->appends(\Request::except('page'))->render() }}
+        {{ $notes->appends(\Request::except('page'))->render() }}
 
 
     @endif

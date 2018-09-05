@@ -33,6 +33,17 @@ class Note extends Model
 
     public $sortableAs = ['not_admin'];
 
+    public function prospectnameSortable($query, $direction)
+    {
+        $id = Auth::id;
+        $query = Prospect::select('name_first')
+            ->where('prospects.user_id', $id)
+            ->get();
+
+        return $query;
+
+    }
+
     public function user(){
         return $this->belongsTo('App\User');
     }
@@ -48,4 +59,5 @@ class Note extends Model
     public function customer(){
         return $this->belongsTo('App\Customer');
     }
+
 }
