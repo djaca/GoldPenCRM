@@ -40,7 +40,7 @@ class User extends Authenticatable
     }
 
     public function note(){
-        return $this->belongsTo('App\Note');
+        return $this->hasMany('App\Note');
     }
 
     public function prospect(){
