@@ -10,3 +10,11 @@ $factory->define(App\Note::class, function (Faker $faker) {
         'description'  => $faker->realText(150)
     ];
 });
+
+/*
+ * Implementing via command prompt:
+ * php artisan tinker
+ * factory(App\Note::class, 10)->create();
+ * App\Customer::all();
+ * App\Customer::count();
+ */

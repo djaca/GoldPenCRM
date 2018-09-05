@@ -25,7 +25,18 @@ class Prospect extends Model
     use Sortable;
 
     public $sortable = [
-        'name_last'
+        'user_id',
+        'funnel_id',
+        'name_last',
+        'name_first',
+        'email',
+        'address1',
+        'address2',
+        'city',
+        'state',
+        'zip',
+        'phone',
+        'fax'
     ];
 
 
@@ -35,7 +46,7 @@ class Prospect extends Model
     }
 
     public function notes(){
-        return $this->hasMany('App\Note');
+        return $this->belongsTo('App\Note');
     }
 
     public function funnel(){

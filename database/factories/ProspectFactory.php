@@ -20,7 +20,7 @@ $factory->define(App\Prospect::class, function (Faker $faker) {
 /*
  * Implementing via command prompt:
  * php artisan tinker
- * factory(App\Customer::class, 10)->create();
+ * factory(App\Prospect::class, 10)->create();
  * App\Customer::all();
  * App\Customer::count();
  */

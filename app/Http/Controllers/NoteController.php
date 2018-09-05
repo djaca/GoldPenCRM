@@ -18,11 +18,7 @@ class NoteController extends Controller
      */
     public function index()
     {
-
         $notes = Note::sortable()->paginate(20);
-
-
-//        $notes2 = '';
 
         if(Auth::id() != 1){
             $notes = Note::where('notes.user_id', Auth::id())->sortable()->paginate(20);

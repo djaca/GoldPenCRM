@@ -16,17 +16,21 @@ class ProspectController extends Controller
      */
     public function index()
     {
-        $prospects = Prospect::orderBy('updated_at', 'desc')->paginate(25);
 
-        $usr_pros = '';
+
+        $prospects = Prospect::sortable()->paginate(20);
+
+        if(Auth::id() != 1){
+            $prospects = Prospect::where('prospects.user_id', Auth::id())->sortable()->paginate(20);
+        }
+        /*$usr_pros = '';
 
         if(Auth::user()){
             $usr_pros = Prospect::where('user_id', Auth::user()->id)->orderBy('updated_at', 'desc')->paginate(25);
-        }
+        }*/
 
 
-        return view('roles.admin.prospects.index',
-            compact('prospects','usr_pros'));
+        return view('roles.admin.prospects.index', compact('prospects'));
     }
 
     /**
@@ -78,7 +82,7 @@ class ProspectController extends Controller
      */
     public function show(Prospect $prospect)
     {
-        //
+        return "Welcome " . $prospect->name_first . ' ' . $prospect->name_last;
     }
 
     /**
@@ -87,9 +91,12 @@ class ProspectController extends Controller
      * @param  \App\Prospect  $prospect
      * @return \Illuminate\Http\Response
      */
-    public function edit(Prospect $prospect)
+    public function edit($id)
     {
-        //
+        $prospect = Prospect::findOrFail($id);
+        $funnels = Funnel::pluck('status', 'id')->all();
+
+        return view('roles.admin.prospects.edit', compact('prospect', 'funnels'));
     }
 
     /**
@@ -99,9 +106,13 @@ class ProspectController extends Controller
      * @param  \App\Prospect  $prospect
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Prospect $prospect)
+    public function update(Request $request, $id)
     {
-        //
+        $prospect = Prospect::findOrFail($id);
+        $input = $request->all();
+        $prospect->update($input);
+
+        return redirect(route('prospects.index'));
     }
 
     /**
@@ -110,8 +121,10 @@ class ProspectController extends Controller
      * @param  \App\Prospect  $prospect
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Prospect $prospect)
+    public function destroy($id)
     {
-        //
+        Prospect::findOrFail($id)->delete();
+//        Session::flash('deleted_user', 'The user has been deleted');
+        return redirect(route('prospects.index'));
     }
 }
