@@ -37,6 +37,13 @@ class NoteController extends Controller
         $funnels = Funnel::pluck('status', 'id')->all();
         $prospects = Prospect::orderBy('name_last')->pluck('name_last', 'id')->all();
 
+        if(Auth::id() != 1){
+            $prospects = Prospect::where('prospects.user_id', Auth::id())
+                ->orderBy('name_last')
+                ->pluck('name_last', 'id')
+                ->all();
+        }
+
 
         return view('roles.admin.notes.create', compact('funnels','prospects'));
     }

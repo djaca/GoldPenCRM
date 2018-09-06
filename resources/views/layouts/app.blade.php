@@ -54,13 +54,26 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li>
-                                <a href="{{ route('prospects.index') }}">Prospects
+
+                            <li class="dropdown">
+                                <a href="{{ route('prospects.index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                    Prospects <span class="caret"></span>
                                 </a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ route('prospects.create') }}">Create Prospect</a></li>
+                                </ul>
+
                             </li>
-                            <li>
-                                <a href="{{ route('notes.index') }}">Notes
+
+                            <li class="dropdown">
+                                <a href="{{ route('notes.index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                    Notes <span class="caret"></span>
                                 </a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ route('notes.create') }}">Write Note</a></li>
+                                </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>

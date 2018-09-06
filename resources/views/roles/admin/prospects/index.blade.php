@@ -92,7 +92,9 @@
             <thead>
             <tr>
                 <th></th>
+                <th>@sortablelink('id', 'ID')</th>
                 <th>@sortablelink('name_last', 'Last')</th>
+
                 <th>@sortablelink('name_first', 'First')</th>
                 <th>@sortablelink('email', 'Email')</th>
                 <th>@sortablelink('phone', 'phone')</th>
@@ -106,6 +108,7 @@
                     @if(Auth::user()->id == $usr_pro->user_id)
                         <tr>
                             <td><a href="{{route('prospects.edit', $usr_pro->id)}}">EDIT</a></td>
+                            <td>{{ $usr_pro->id }}</td>
                             <td>{{$usr_pro->name_last ? $usr_pro->name_last : "-"}}</td>
                             <td>{{$usr_pro->name_first}}</td>
                             <td>{{$usr_pro->email ? $usr_pro->email : "-"}}</td>
