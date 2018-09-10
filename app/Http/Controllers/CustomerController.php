@@ -14,7 +14,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::sortable()->paginate(20);
+        return view('roles.admin.customers.index', compact('customers'));
     }
 
     /**

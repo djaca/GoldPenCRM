@@ -61,6 +61,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+                                    <li><a href="{{ route('prospects.index') }}">View Prospects</a></li>
                                     <li><a href="{{ route('prospects.create') }}">Create Prospect</a></li>
                                 </ul>
 
@@ -72,6 +73,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+                                    <li><a href="{{ route('notes.index') }}">View Notes</a></li>
                                     <li><a href="{{ route('notes.create') }}">Write Note</a></li>
                                 </ul>
                             </li>

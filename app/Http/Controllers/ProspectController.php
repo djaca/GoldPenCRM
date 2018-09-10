@@ -16,8 +16,6 @@ class ProspectController extends Controller
      */
     public function index()
     {
-
-
         $prospects = Prospect::sortable()->paginate(20);
 
         if(Auth::id() != 1){
