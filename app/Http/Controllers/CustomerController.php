@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Funnel;
 use App\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -15,6 +17,11 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::sortable()->paginate(20);
+
+        if(Auth::id() != 1){
+            $customers = Customer::where('customers.user_id', Auth::id())->sortable()->paginate(20);
+        }
+
         return view('roles.admin.customers.index', compact('customers'));
     }
 

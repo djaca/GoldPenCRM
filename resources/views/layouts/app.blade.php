@@ -61,8 +61,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ route('prospects.index') }}">View Prospects</a></li>
-                                    <li><a href="{{ route('prospects.create') }}">Create Prospect</a></li>
+                                    <li><a href="{{ route('prospects.index') }}">View</a></li>
+                                    <li><a href="{{ route('prospects.create') }}">Create</a></li>
                                 </ul>
 
                             </li>
@@ -73,9 +73,21 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ route('notes.index') }}">View Notes</a></li>
-                                    <li><a href="{{ route('notes.create') }}">Write Note</a></li>
+                                    <li><a href="{{ route('notes.index') }}">View</a></li>
+                                    <li><a href="{{ route('notes.create') }}">Create</a></li>
                                 </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="{{ route('customers.index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                    Customers <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ route('customers.index') }}">View</a></li>
+                                    <li><a href="{{ route('customers.create') }}">Create</a></li>
+                                </ul>
+
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>

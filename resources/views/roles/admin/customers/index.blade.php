@@ -9,7 +9,7 @@
     @if(@!Auth::user())
         You do not have permission to access this content.
 
-    {{-- ADMIN ACCESS --}}
+    {{-- ADMIN ACCESS --}}cd
     @elseif(Auth::user()->role_id == 1)
 
         <div class="row">
@@ -28,7 +28,8 @@
                 <th>@sortablelink('id', 'ID')</th>
                 <th>@sortablelink('user.name', 'User')</th>
                 <th>@sortablelink('name', 'Name')</th>
-                <th>@sortablelink('created_at', 'Created')</th>
+                <th>@sortablelink('updated_at', 'Updated')</th>
+                <th>@sortablelink('funnel.id', 'Status ')</th>
             </tr>
             </thead>
             <tbody>
@@ -40,8 +41,24 @@
                         <td>{{$customer->id}}</td>
                         <td>{{$customer->user->name}}</td>
                         <td>{{$customer->name}}</td>
-                        <td>{{$customer->created_at ? $customer->created_at->diffForHumans() : "-"}}</td>
+                        <td>{{$customer->updated_at ? $customer->created_at->diffForHumans() : "-"}}</td>
 
+                        @if($customer->funnel->status == "Hot")
+                            <td style="background-color:purple; color:white; text-transform:uppercase; text-align:center;">{{$customer->funnel->status}}</td>
+
+                        @elseif($customer->funnel->status == "Warm")
+                            <td style="background-color:orange; color:white; text-transform:uppercase; text-align:center;">{{$customer->funnel->status}}</td>
+
+                        @elseif($customer->funnel->status == "Cold")
+                            <td style="background-color:lightblue; color:white; text-transform:uppercase; text-align:center;">{{$customer->funnel->status}}</td>
+
+                        @elseif($customer->funnel->status == "Dead")
+                            <td style="background-color:#cfcfcf; color:#c3c3c3; text-transform:uppercase; text-align:center;">{{$customer->funnel->status}}</td>
+
+                        @else
+                            <td>-</td>
+
+                        @endif
                     </tr>
                 @endforeach
             @endif
@@ -59,7 +76,7 @@
 
         <div class="row">
             <div class="col-md-10">
-                <h1>customers</h1>
+                <h1>Customers</h1>
             </div>
 
             <div class="col-md-2">
@@ -71,30 +88,40 @@
         <table class="table">
             <thead>
             <tr>
-                <th>@sortablelink('id', 'ID')</th>
-                <th>@sortablelink('user.name', 'User')</th>
-                <th>@sortablelink('prospect.name_last', 'Last')</th>
-                <th>@sortablelink('prospect.name_first', 'First')</th>
-                <th>@sortablelink('title', 'Title')</th>
-                <th>@sortablelink('description', 'Description')</th>
-                <th>@sortablelink('created_at', 'Created')</th>
+                <th>@sortablelink('name', 'Name')</th>
+                <th>@sortablelink('email', 'Email')</th>
+                <th>@sortablelink('phone', 'Phone')</th>
+                <th>@sortablelink('funnel.id', 'Status ')</th>
             </tr>
             </thead>
             <tbody>
 
             @if($customers)
-                @foreach($customers as $user_customer)
-@if(Auth::user()->id == $user_customer->user_id)
+                @foreach($customers as $customer)
+                    @if(Auth::user()->id == $customer->user_id)
 
                         <tr>
-                            <td>{{$user_customer->id}}</td>
-                            <td>{{$user_customer->user->name}}</td>
-                            <td>{{$user_customer->prospect->name_last}}</td>
-                            <td>{{$user_customer->prospect->name_first}}</td>
-                            <td>{{$user_customer->title}}</td>
-                            <td>{{str_limit($user_customer->description, 60, ' ...')}}</td>
-                            <td>{{$user_customer->created_at ? $user_customer->created_at->diffForHumans() : "-"}}</td>
+                            <td>{{$customer->name}}</td>
+                            <td>{{$customer->email}}</td>
+                            <td>{{$customer->phone}}</td>
 
+
+                            @if($customer->funnel->status == "Hot")
+                                <td style="background-color:purple; color:white; text-transform:uppercase; text-align:center;">{{$customer->funnel->status}}</td>
+
+                            @elseif($customer->funnel->status == "Warm")
+                                <td style="background-color:orange; color:white; text-transform:uppercase; text-align:center;">{{$customer->funnel->status}}</td>
+
+                            @elseif($customer->funnel->status == "Cold")
+                                <td style="background-color:lightblue; color:white; text-transform:uppercase; text-align:center;">{{$customer->funnel->status}}</td>
+
+                            @elseif($customer->funnel->status == "Dead")
+                                <td style="background-color:#cfcfcf; color:#c3c3c3; text-transform:uppercase; text-align:center;">{{$customer->funnel->status}}</td>
+
+                            @else
+                                <td>-</td>
+
+                            @endif
                         </tr>
 @endif
 
